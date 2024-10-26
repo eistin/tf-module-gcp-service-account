@@ -33,7 +33,13 @@ variable "enable_cloudsql_client" {
 
 /******************************************   CLOUD STORAGE  *****************************************/
 
-variable "enable_cloud_storage" {
+variable "enable_cloud_storage_object_viewer" {
+  description = "Enable Cloud Storage access for the service account"
+  type        = bool
+  default     = false
+}
+
+variable "enable_cloud_storage_object_creator" {
   description = "Enable Cloud Storage access for the service account"
   type        = bool
   default     = false

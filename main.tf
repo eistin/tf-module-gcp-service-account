@@ -39,9 +39,16 @@ resource "google_project_iam_member" "cloudsql_instance_user" {
 /******************************************   CLOUD STORAGE  *****************************************/
 
 resource "google_project_iam_member" "storage_object_viewer" {
-  count   = var.enable_cloud_storage ? 1 : 0
+  count   = var.enable_cloud_storage_object_viewer ? 1 : 0
   project = var.project_id
   role    = "roles/storage.objectViewer"
+  member  = "serviceAccount:${google_service_account.service_account.email}"
+}
+
+resource "google_project_iam_member" "storage_object_creator" {
+  count   = var.enable_cloud_storage_object_creator ? 1 : 0
+  project = var.project_id
+  role    = "roles/storage.objectCreator"
   member  = "serviceAccount:${google_service_account.service_account.email}"
 }
 
