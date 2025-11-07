@@ -45,6 +45,22 @@ variable "enable_cloud_storage_object_creator" {
   default     = false
 }
 
+/******************************************   CLOUD STORAGE ADMIN  *****************************************/
+
+variable "enable_cloud_storage_admin" {
+  description = "Enable Cloud Storage Admin role for the service account (full storage admin access)"
+  type        = bool
+  default     = false
+}
+
+/******************************************   SERVICE ACCOUNT TOKEN CREATOR  *****************************************/
+
+variable "enable_service_account_token_creator" {
+  description = "Enable Service Account Token Creator role for the service account"
+  type        = bool
+  default     = false
+}
+
 /******************************************   SECRET MANAGER  *****************************************/
 
 variable "enable_cloud_secret_manager" {

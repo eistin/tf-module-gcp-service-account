@@ -52,6 +52,24 @@ resource "google_project_iam_member" "storage_object_creator" {
   member  = "serviceAccount:${google_service_account.service_account.email}"
 }
 
+/******************************************   CLOUD STORAGE ADMIN  *****************************************/
+
+resource "google_project_iam_member" "storage_admin" {
+  count   = var.enable_cloud_storage_admin ? 1 : 0
+  project = var.project_id
+  role    = "roles/storage.admin"
+  member  = "serviceAccount:${google_service_account.service_account.email}"
+}
+
+/******************************************   SERVICE ACCOUNT TOKEN CREATOR  *****************************************/
+
+resource "google_project_iam_member" "service_account_token_creator" {
+  count   = var.enable_service_account_token_creator ? 1 : 0
+  project = var.project_id
+  role    = "roles/iam.serviceAccountTokenCreator"
+  member  = "serviceAccount:${google_service_account.service_account.email}"
+}
+
 /******************************************   SECRET MANAGER  *****************************************/
 
 resource "google_project_iam_member" "secret_manager_accessor" {
